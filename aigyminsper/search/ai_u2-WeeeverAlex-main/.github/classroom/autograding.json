@@ -1,0 +1,14 @@
+{
+  "tests": [
+    {
+      "name": "Teste basico",
+      "setup": "sudo -H pip3 install pytest aigyminsper",
+      "run": "pytest",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    }
+  ]
+}

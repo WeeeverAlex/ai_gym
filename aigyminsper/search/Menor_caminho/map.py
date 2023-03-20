@@ -2,6 +2,7 @@ from aigyminsper.search.SearchAlgorithms import BuscaProfundidadeIterativa
 from aigyminsper.search.SearchAlgorithms import BuscaCustoUniforme
 from aigyminsper.search.SearchAlgorithms import BuscaGananciosa
 from aigyminsper.search.SearchAlgorithms import BuscaLargura
+from aigyminsper.search.SearchAlgorithms import AEstrela
 from aigyminsper.search.Graph import State
 import time
 import networkx as nx
@@ -35,8 +36,9 @@ class Map(State):
         return str(self.operator)
 
     def env(self):
-        return self.city
-
+        #return self.city
+        return self.city+ " " +str(self.cost)+ " " + self.operator
+    
     def h(self):
         return int(Map.g.edges[self.city,self.goal]['distance'])
         #return random.randint(1,10)
@@ -85,7 +87,8 @@ def main():
     state = Map('i', 0, 'i', 'x')
     #algorithm = BuscaLargura()
     #algorithm = BuscaCustoUniforme()
-    algorithm = BuscaGananciosa()
+    #algorithm = BuscaGananciosa()
+    algorithm = AEstrela()
     ts = time.time()
     result = algorithm.search(state, trace=True)
     tf = time.time()
